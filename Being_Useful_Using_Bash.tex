@@ -142,7 +142,7 @@ Reference :
     \pause
     \item \href{https://www.shell-tips.com/bash/math-arithmetic-calculation/}{Shell Tips - Doing Math in Bash}
     \pause
-    \item See : \code{codes/variable-substitution.sh}
+    \item See : \code{codes/variable-ex.sh}
 \end{itemize}
 \begingroup
 \scriptsize
@@ -153,27 +153,35 @@ $ echo "V1 = ${V1}"   # That worked!
 $ echo "V1 = $V1"     # Note lack of braces, this will hurt you someday
 # Simple Math
 $ V1=$(expr 3 + 1)
-$ echo "V1 = ${V1}"     # That worked!
+$ echo "V1 = ${V1}"     # That worked! 
 \end{lstlisting}
 \endgroup
 \end{frame}
 
 
-
 \begin{frame}[fragile]
 \frametitle{Conditionals}
+Reference :
+\begin{itemize}
+    \item \href{https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_01.html}{TLDP - If statements}
+    \pause
+    \item \code{codes/if-statement-ex.sh}
+\end{itemize}
 \begingroup
 \scriptsize
 \begin{lstlisting}[backgroundcolor = \color{codegray}, language = Bash, showstringspaces=false]
-$ module purge
-$ python
-Python 2.6.6 (r266:84292, Aug 18 2016, 15:13:37)
-[GCC 4.4.7 20120313 (Red Hat 4.4.7-17)] on linux2
-Type "help", "copyright", "credits" or "license" for more info
->>> import numpy
->>> numpy.__file__
-'/usr/lib64/python2.6/site-packages/numpy/__init__.pyc'
->>> exit()
+#### Simple if statement ####
+echo "Simple if statement"
+if [ -a codes/if-statement-ex.sh ]; then    ## Note [  ] delineates conditional
+    echo "codes/if-statement-ex.sh EXISTS"
+fi
+#### Simple if else statement ####
+echo "if / else statement"
+if [ -a codes/if-statement-ex.sh ]; then    ## Note [  ] delineates conditional
+    echo "codes/if-statement-ex.sh EXISTS"
+else
+    echo "codes/if-statement-ex.sh DNE"
+fi
 \end{lstlisting}
 \endgroup
 \end{frame}
@@ -322,11 +330,13 @@ Use features of bash to programmatically interact with the Linux Operating syste
 \begin{itemize}
     \item \href{https://tldp.org/LDP/abs/html/parameter-substitution.html}{TLDP - Parameter Substitution}
     \bigskip
-    \item \href{https://stackoverflow.com/questions/6697753/difference-between-single-and-double-quotes-in-bash}{Quotes explained in Bash - Stackoverflow}
+    \item \href{https://stackoverflow.com/questions/6697753/difference-between-single-and-double-quotes-in-bash}{Stackoverflow - Quotes explained in Bash }
     \bigskip
     \item \href{https://www.shell-tips.com/bash/math-arithmetic-calculation/}{Shell Tips - Doing Math in Bash}
     \bigskip
-    \item \href{https://stackoverflow.com/a/5163260/4021436}{Dollar sign explained in Bash - Stackoverflow}
+    \item \href{https://stackoverflow.com/a/5163260/4021436}{Stackoverflow - Dollar sign explained in Bash }
+    \bigskip
+    \item \href{https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_01.html}{TLDP - If statements}
 \end{itemize}
 \end{frame}
 
