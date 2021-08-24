@@ -5,6 +5,7 @@
 # Refs    : TLDP - if statements : https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_01.html
 #          
 #         
+set -e          # Exit if a line ends with error
 
 #### Simple if statement ####
 echo "Simple if statement"

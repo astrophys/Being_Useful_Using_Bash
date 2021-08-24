@@ -238,62 +238,53 @@ done
 \end{frame}
 
 
-\begin{frame}[fragile]
-\frametitle{Primitive Error Handling}
-See : 
-\begingroup
-\scriptsize
-\begin{lstlisting}[backgroundcolor = \color{codegray}, language = Bash, showstringspaces=false]
-$ module purge
-$ python
-Python 2.6.6 (r266:84292, Aug 18 2016, 15:13:37)
-[GCC 4.4.7 20120313 (Red Hat 4.4.7-17)] on linux2
-Type "help", "copyright", "credits" or "license" for more info
->>> import numpy
->>> numpy.__file__
-'/usr/lib64/python2.6/site-packages/numpy/__init__.pyc'
->>> exit()
-\end{lstlisting}
-\endgroup
-\end{frame}
+%\begin{frame}[fragile]
+%\frametitle{Primitive Error Handling}
+%See : 
+%\begingroup
+%\scriptsize
+%\begin{lstlisting}[backgroundcolor = \color{codegray}, language = Bash, showstringspaces=false]
+%\end{lstlisting}
+%\endgroup
+%\end{frame}
 
 
 
 \begin{frame}
 \frametitle{Other Useful Features}
 \begin{itemize}
-    \item Pipes 
+    \item Pipes (revisit in a minute)
     \pause
     \item Stdout and stderr streams (ignored here)
     \pause
-    \item Bash scripts
+    \item Bash scripts (See \code{codes/}
     \pause
 \end{itemize}
 \end{frame}
 
 
-\begin{frame}
-\frametitle{Pipes}
-Give examples here
-\begin{itemize}
-    \item Pipes 
-    \pause
-    \item Stdout and stderr streams (ignored here)
-    \pause
-\end{itemize}
-\end{frame}
+%\begin{frame}
+%\frametitle{Pipes}
+%Example : 
+%\begin{itemize}
+%    \item \code{ls | less}
+%    \pause
+%    \item Stdout and stderr streams (ignored here)
+%    \pause
+%\end{itemize}
+%\end{frame}
 
 
-\begin{frame}
-\frametitle{Bash Scripts}
-Give examples here
-\begin{itemize}
-    \item 
-    \pause
-    \item
-    \pause
-\end{itemize}
-\end{frame}
+%\begin{frame}
+%\frametitle{Bash Scripts}
+%Give examples here
+%\begin{itemize}
+%    \item 
+%    \pause
+%    \item
+%    \pause
+%\end{itemize}
+%\end{frame}
 
 
 \begin{frame}
@@ -316,23 +307,24 @@ These aren't strictly Bash, but are incredibly useful none-the-less
 \end{frame}
 
 
-
-
-
-\begin{frame}
-\frametitle{Being Useful}
-Use features of bash to programmatically interact with the Linux Operating system. Examples:
-\begin{itemize}
-    \item Using loops to operate over a set of files
-    \pause
-    \item Interactive Shell on Franklin
-    \pause
-    \item There are 'other' shells available
-    \begin{enumerate}
-        \item Korn Shell (\code{ksh}), C Shell (\code{csh}), Z shell (\code{zsh})
-    \end{enumerate}
-\end{itemize}
+\begin{frame}[fragile]
+\frametitle{Not Bash but still useful}
+\begingroup
+\scriptsize
+\begin{lstlisting}[backgroundcolor = \color{codegray}, language = Bash, showstringspaces=false]
+$ python codes/generate-fake-files.py   ## generate fake data
+$ grep -rn "abc" fake-data/             ## search for lines in files with "abc" in it
+$ find fake-data -name "*0*" -print     ## print files with '0' in their name
+$ man find                              ## Look at man page for find
+$ less -SN fake-data/file_0_*           ## Investigate file with read only file viewer
+$ history                               ## prints out your bash history (may be enourmous)
+$ history | tail -n 20                  ## print last 20 lines of history, note pipe redirects
+$ history | grep "find"                 ## search for commands in history where 'find' was used
+\end{lstlisting}
+\endgroup
 \end{frame}
+
+
 
 
 

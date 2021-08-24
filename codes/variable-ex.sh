@@ -5,6 +5,7 @@
 # Refs    : https://tldp.org/LDP/abs/html/parameter-substitution.html
 #           Braces explained : https://stackoverflow.com/a/2188369/4021436
 #           '$' Explained    : https://stackoverflow.com/a/5163260/4021436
+set -e          # Exit if a line ends with error
 
 
 ##### Simple variable assignment #####

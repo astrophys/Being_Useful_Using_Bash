@@ -5,6 +5,7 @@
 # Refs    : TLDP - Loops : https://tldp.org/LDP/abs/html/loops1.html
 #          
 #         
+set -e          # Exit if a line ends with error
 
 
 #### Simple Counting for loop####

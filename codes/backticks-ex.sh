@@ -5,7 +5,7 @@
 # Refs    : TLDP - Command Subsition : https://tldp.org/LDP/abs/html/commandsub.html
 #          
 #         
-
+set -e          # Exit if a line ends with error
 
 #### Simple command substitution ####
 DIRSIZE=`du -hs`

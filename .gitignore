@@ -12,3 +12,4 @@ program
 *.so.*
 *.so
 *.o
+fake-data
