@@ -10,6 +10,8 @@ set -e          # Exit if a line ends with error
 #### Simple command substitution ####
 DIRSIZE=`du -hs`
 echo "Size of current directory : ${DIRSIZE}"
+echo
+echo
 
 
 #### In a Loop - sort of silly ####
