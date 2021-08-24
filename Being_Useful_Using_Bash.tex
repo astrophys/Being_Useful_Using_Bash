@@ -114,20 +114,46 @@ As a programming language, it has :
 \end{frame}
 
 
+\begin{frame}
+\frametitle{What is Bash?}
+Criticism : 
+\begin{itemize}
+    \item Syntax is ugly and clunky
+    \pause
+    \item Doesn't support floating point arithmetic (e.g. \code{VAR = 4.1 + 2.3}
+    \pause
+    \item Doesn't support real error handling
+    \pause
+    \item For complex tasks use a fully functional language (e.g. Python, Perl)
+    \pause
+    \item Very sensitive to white space and quotes
+    \pause
+    \item For more complex usage in Bash, I find myself heavily relying on Google
+\end{itemize}
+\end{frame}
+
+
+
 \begin{frame}[fragile]
-\frametitle{Variable Substition}
+\frametitle{Variables}
+Reference :
+\begin{itemize}
+    \item \href{https://tldp.org/LDP/abs/html/parameter-substitution.html}{TLDP - Parameter Substitution}
+    \pause
+    \item \href{https://www.shell-tips.com/bash/math-arithmetic-calculation/}{Shell Tips - Doing Math in Bash}
+    \pause
+    \item See : \code{codes/variable-substitution.sh}
+\end{itemize}
 \begingroup
 \scriptsize
 \begin{lstlisting}[backgroundcolor = \color{codegray}, language = Bash, showstringspaces=false]
-$ module purge
-$ python
-Python 2.6.6 (r266:84292, Aug 18 2016, 15:13:37)
-[GCC 4.4.7 20120313 (Red Hat 4.4.7-17)] on linux2
-Type "help", "copyright", "credits" or "license" for more info
->>> import numpy
->>> numpy.__file__
-'/usr/lib64/python2.6/site-packages/numpy/__init__.pyc'
->>> exit()
+# Simple variable assignment
+$ V1="my simple string"
+$ echo "V1 = ${V1}"   # That worked!
+$ echo "V1 = $V1"     # Note lack of braces, this will hurt you someday
+# Simple Math
+$ V1=$(expr 3 + 1)
+$ echo "V1 = ${V1}"     # That worked!
 \end{lstlisting}
 \endgroup
 \end{frame}
@@ -156,6 +182,45 @@ Type "help", "copyright", "credits" or "license" for more info
 
 \begin{frame}[fragile]
 \frametitle{Loops}
+\begingroup
+\scriptsize
+\begin{lstlisting}[backgroundcolor = \color{codegray}, language = Bash, showstringspaces=false]
+$ module purge
+$ python
+Python 2.6.6 (r266:84292, Aug 18 2016, 15:13:37)
+[GCC 4.4.7 20120313 (Red Hat 4.4.7-17)] on linux2
+Type "help", "copyright", "credits" or "license" for more info
+>>> import numpy
+>>> numpy.__file__
+'/usr/lib64/python2.6/site-packages/numpy/__init__.pyc'
+>>> exit()
+\end{lstlisting}
+\endgroup
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Backticks}
+\begingroup
+\scriptsize
+\begin{lstlisting}[backgroundcolor = \color{codegray}, language = Bash, showstringspaces=false]
+$ module purge
+$ python
+Python 2.6.6 (r266:84292, Aug 18 2016, 15:13:37)
+[GCC 4.4.7 20120313 (Red Hat 4.4.7-17)] on linux2
+Type "help", "copyright", "credits" or "license" for more info
+>>> import numpy
+>>> numpy.__file__
+'/usr/lib64/python2.6/site-packages/numpy/__init__.pyc'
+>>> exit()
+\end{lstlisting}
+\endgroup
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Primitive Error Handling}
+See : 
 \begingroup
 \scriptsize
 \begin{lstlisting}[backgroundcolor = \color{codegray}, language = Bash, showstringspaces=false]
@@ -251,6 +316,21 @@ Use features of bash to programmatically interact with the Linux Operating syste
 
 
 
+% Include slides on .bashrc / .profile
+\begin{frame}
+\frametitle{References}
+\begin{itemize}
+    \item \href{https://tldp.org/LDP/abs/html/parameter-substitution.html}{TLDP - Parameter Substitution}
+    \bigskip
+    \item \href{https://stackoverflow.com/questions/6697753/difference-between-single-and-double-quotes-in-bash}{Quotes explained in Bash - Stackoverflow}
+    \bigskip
+    \item \href{https://www.shell-tips.com/bash/math-arithmetic-calculation/}{Shell Tips - Doing Math in Bash}
+    \bigskip
+    \item \href{https://stackoverflow.com/a/5163260/4021436}{Dollar sign explained in Bash - Stackoverflow}
+\end{itemize}
+\end{frame}
+
+
 
 
 
@@ -283,6 +363,9 @@ Can put things in it like:
     \pause
     \bigskip
     \item Aliases, e.g. \code{alias ll='ls -l'}
+    \pause
+    \bigskip
+    \item \href{https://www.shell-tips.com/bash/math-arithmetic-calculation/}{Shell Tips - Doing Math in Bash}
 \end{itemize}
 \end{frame}
 
