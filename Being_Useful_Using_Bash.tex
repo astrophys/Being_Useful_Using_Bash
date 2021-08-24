@@ -45,6 +45,7 @@
 % https://tex.stackexchange.com/questions/65291/code-snippet-in-text
 \definecolor{codegray}{gray}{0.9}
 \newcommand{\code}[1]{\colorbox{codegray}{\texttt{#1}}}
+\hypersetup{colorlinks=true,urlcolor=blue, linktocpage}  % Makes red / pink?
 
 
 
@@ -103,7 +104,7 @@ Mac:
 \frametitle{What is Bash?}
 As a programming language, it has :
 \begin{itemize}
-    \item Variables (i.e. \code{if/else})
+    \item Variables 
     \pause
     \item Conditionals (i.e. \code{if/else})
     \pause
@@ -120,7 +121,7 @@ Criticism :
 \begin{itemize}
     \item Syntax is ugly and clunky
     \pause
-    \item Doesn't support floating point arithmetic (e.g. \code{VAR = 4.1 + 2.3}
+    \item Doesn't support floating point arithmetic (e.g. \code{VAR = \$(expr 4.1 + 2.3)} )
     \pause
     \item Doesn't support real error handling
     \pause
@@ -128,7 +129,7 @@ Criticism :
     \pause
     \item Very sensitive to white space and quotes
     \pause
-    \item For more complex usage in Bash, I find myself heavily relying on Google
+    \item I find myself heavily relying on Google to get things right
 \end{itemize}
 \end{frame}
 
@@ -149,11 +150,11 @@ Reference :
 \begin{lstlisting}[backgroundcolor = \color{codegray}, language = Bash, showstringspaces=false]
 # Simple variable assignment
 $ V1="my simple string"
-$ echo "V1 = ${V1}"   # That worked!
-$ echo "V1 = $V1"     # Note lack of braces, this will hurt you someday
+$ echo "V1 = ${V1}"   # worked!
+$ echo "V1 = $V1"     # Note lack of braces, it'll hurt you someday
 # Simple Math
 $ V1=$(expr 3 + 1)
-$ echo "V1 = ${V1}"     # That worked! 
+$ echo "V1 = ${V1}"   # worked! 
 \end{lstlisting}
 \endgroup
 \end{frame}
@@ -172,12 +173,12 @@ Reference :
 \begin{lstlisting}[backgroundcolor = \color{codegray}, language = Bash, showstringspaces=false]
 #### Simple if statement ####
 echo "Simple if statement"
-if [ -a codes/if-statement-ex.sh ]; then    ## Note [  ] delineates conditional
+if [ -a codes/if-statement-ex.sh ]; then    
     echo "codes/if-statement-ex.sh EXISTS"
 fi
 #### Simple if else statement ####
 echo "if / else statement"
-if [ -a codes/if-statement-ex.sh ]; then    ## Note [  ] delineates conditional
+if [ -a codes/if-statement-ex.sh ]; then   
     echo "codes/if-statement-ex.sh EXISTS"
 else
     echo "codes/if-statement-ex.sh DNE"
@@ -224,7 +225,7 @@ Reference :
 \end{itemize}
 \begingroup
 \scriptsize
-\begin{lstlisting}[backgroundcolor = \color{codegray}, language = Bash, showstringspaces=false]
+\begin{lstlisting}[backgroundcolor = \color{codegray}, language = Bash, showstringspaces=false, literate={`}{\textasciigrave}1,]
 #### Simple command substitution ####
 DIRSIZE=`du -hs`
 echo "Size of current directory : ${DIRSIZE}"
@@ -257,8 +258,7 @@ done
     \pause
     \item Stdout and stderr streams (ignored here)
     \pause
-    \item Bash scripts (See \code{codes/}
-    \pause
+    \item Bash scripts (See \code{codes/})
 \end{itemize}
 \end{frame}
 
@@ -289,7 +289,7 @@ done
 
 \begin{frame}
 \frametitle{Not Bash but still useful}
-These aren't strictly Bash, but are incredibly useful none-the-less
+Not Strictly Bash, but incredibly useful 
 \begin{itemize}
     \item \code{grep} - search text for strings
     \pause
@@ -297,12 +297,11 @@ These aren't strictly Bash, but are incredibly useful none-the-less
     \pause
     \item \code{man XXXX} - Get manual page
     \pause
-    \item \code{less}, \code{tail}, \code{head} - for viewing files w/o locally copying
+    \item \code{less}, \code{tail}, \code{head} - for viewing files locally 
     \pause
     \item \code{gedit} - GUI text editor
     \pause
     \item \code{history} - get list of previous commands
-    \pause
 \end{itemize}
 \end{frame}
 
@@ -313,13 +312,13 @@ These aren't strictly Bash, but are incredibly useful none-the-less
 \scriptsize
 \begin{lstlisting}[backgroundcolor = \color{codegray}, language = Bash, showstringspaces=false]
 $ python codes/generate-fake-files.py   ## generate fake data
-$ grep -rn "abc" fake-data/             ## search for lines in files with "abc" in it
-$ find fake-data -name "*0*" -print     ## print files with '0' in their name
-$ man find                              ## Look at man page for find
-$ less -SN fake-data/file_0_*           ## Investigate file with read only file viewer
-$ history                               ## prints out your bash history (may be enourmous)
-$ history | tail -n 20                  ## print last 20 lines of history, note pipe redirects
-$ history | grep "find"                 ## search for commands in history where 'find' was used
+$ grep -rn "abc" fake-data/             ## search lines in files 
+$ find fake-data -name "*0*" -print     ## Files with '0' in name
+$ man find                              ## Read docs for find
+$ less -SN fake-data/file_0_*           ## Read only file viewer
+$ history                               ## print bash history 
+$ history | tail -n 20                  ## Last 20 lines 
+$ history | grep "find"                 ## Search bash history
 \end{lstlisting}
 \endgroup
 \end{frame}
@@ -350,40 +349,38 @@ $ history | grep "find"                 ## search for commands in history where 
 
 
 
-%%%%%%%% OTHER %%%%%%%%%%%%%
-
-% Include slides on .bashrc / .profile
-\begin{frame}
-\frametitle{.bashrc and .profile}
-\code{.bashrc} and \code{.profile}
-\bigskip
-\begin{itemize}
-    \item One (or both) run at the beginning of shell session.
-    \bigskip
-    \pause
-    \item Can put \code{echo "Hello from X"} at top to determine which runs when you log in.
-\end{itemize}
-\end{frame}
-
-
-% Include slides on .bashrc / .profile
-\begin{frame}
-\frametitle{.bashrc and .profile}
-Can put things in it like:
-\bigskip
-\begin{itemize}
-    \item Modules, e.g. \code{module load python/3.5.6}
-    \bigskip
-    \pause
-    \item Set environmental variables, e.g. \code{module load python/3.5.6}
-    \pause
-    \bigskip
-    \item Aliases, e.g. \code{alias ll='ls -l'}
-    \pause
-    \bigskip
-    \item \href{https://www.shell-tips.com/bash/math-arithmetic-calculation/}{Shell Tips - Doing Math in Bash}
-\end{itemize}
-\end{frame}
+%%%%%%%%%% OTHER %%%%%%%%%%%%%
+%%
+%%% Include slides on .bashrc / .profile
+%%\begin{frame}
+%%\frametitle{.bashrc and .profile}
+%%\code{.bashrc} and \code{.profile}
+%%\bigskip
+%%\begin{itemize}
+%%    \item One (or both) run at the beginning of shell session.
+%%    \bigskip
+%%    \pause
+%%    \item Can put \code{echo "Hello from X"} at top to determine which runs when you log in.
+%%\end{itemize}
+%%\end{frame}
+%%
+%%
+%%% Include slides on .bashrc / .profile
+%%\begin{frame}
+%%\frametitle{.bashrc and .profile}
+%%Can put things in it like:
+%%\bigskip
+%%\begin{itemize}
+%%    \item Modules, e.g. \code{module load python/3.5.6}
+%%    \bigskip
+%%    \pause
+%%    \item Set environmental variables, e.g. \code{module load python/3.5.6}
+%%    \pause
+%%    \bigskip
+%%    \item Aliases, e.g. \code{alias ll='ls -l'}
+%%    \pause
+%%\end{itemize}
+%%\end{frame}
 
 
 
