@@ -215,19 +215,24 @@ done
 
 
 \begin{frame}[fragile]
-\frametitle{Backticks}
+\frametitle{Backticks - aka 'command substitution'}
+Reference :
+\begin{itemize}
+    \item \href{https://tldp.org/LDP/abs/html/commandsub.html}{TLDP - Backticks and Command Substitution}
+    \pause
+    \item \code{codes/backticks-ex.sh}
+\end{itemize}
 \begingroup
 \scriptsize
 \begin{lstlisting}[backgroundcolor = \color{codegray}, language = Bash, showstringspaces=false]
-$ module purge
-$ python
-Python 2.6.6 (r266:84292, Aug 18 2016, 15:13:37)
-[GCC 4.4.7 20120313 (Red Hat 4.4.7-17)] on linux2
-Type "help", "copyright", "credits" or "license" for more info
->>> import numpy
->>> numpy.__file__
-'/usr/lib64/python2.6/site-packages/numpy/__init__.pyc'
->>> exit()
+#### Simple command substitution ####
+DIRSIZE=`du -hs`
+echo "Size of current directory : ${DIRSIZE}"
+
+#### In a Loop - sort of silly####
+for f in `ls codes`; do
+    echo "f = ${f}"
+done
 \end{lstlisting}
 \endgroup
 \end{frame}
