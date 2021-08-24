@@ -1,19 +1,18 @@
-# Bash Environment and Managing Software
+# Being "Useful" using Bash
 ## Introduction
 These are my notes that I presented to the HPC users at Nationwide Children's Hospital. 
 It is part of my ongoing series in HPC education.
-It is short and incomplete.
-It is directed at users with minimal Linux experience.
+It is short and incomplete. Intended as a 30min presentation.
+It is directed at users with Linux experience at the beginner's level (i.e. they know `ls`, `cd`, etc.)
 
 ## Topics
-This presentation covers : 
-1. Environmental variables and their usage in managing software.
-    * Focuses primarily on `PATH`, `PYTHONPATH` and `LD_LIBRARY_PATH`. 
-2. Modules
-    * Show's how modules change the environmental variable
-3. Libraries
-    * Does an example to illustrate how shared libraries work and how to use `LD_LIBRARY_PATH`. 
-4. Startup scripts like `.bashrc` and `.profile`
+This presentation covers the following topics in Bash: 
+1. Syntax
+2. Variable assignment
+3. Conditionals
+4. Loops
+5. Command substitution
+6. `grep`, `find` and other useful commands
 
 ## Compile
 `pdflatex Bash_Environment.tex`
