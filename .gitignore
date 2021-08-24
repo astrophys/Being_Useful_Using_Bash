@@ -1,0 +1,14 @@
+.*.tex.swp
+*.aux
+*.log
+*.nav
+*.out
+*.pdf
+*.snm
+*.toc
+*.vrb
+images/
+program
+*.so.*
+*.so
+*.o
