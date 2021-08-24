@@ -20,7 +20,7 @@
 \usepackage{times}  % fonts are up to you
 \usepackage{graphics}
 \usepackage{amsmath}
-\usepackage{media9}
+%\usepackage{media9}
 \usepackage{hyperref}
 \usepackage{psfrag}
 \usepackage{pdfpages}
@@ -52,7 +52,7 @@
 \title{Bash Environment and Managing Software}
 \author{Ali Snedden}
 \institute{Nationwide Children's Hospital}
-\date{May 3, 2019}
+\date{August 24, 2021}
  
  
  
@@ -68,7 +68,7 @@
 Windows:
 \begin{itemize}
     \item Open PuTTY
-    \item Window Session $\Rightarrow$ Host Name field : username@10.70.250.101
+    \item Window Session $\Rightarrow$ Host Name field : username@r1pl-hpcf-log01
     \item Click ``Open" to log in.
     \item Enter password
 \end{itemize}
@@ -76,118 +76,46 @@ Windows:
 Mac:
 \begin{itemize}
     \item Open Terminal (Finder $\Rightarrow$ Utilities $\Rightarrow$ Terminal)
-    \item \code{ssh -X username@10.70.250.101}
+    \item \code{ssh -X username@r1pl-hpcf-log01}
 \end{itemize}
 \end{frame}
 
 
 
 \begin{frame}
-\frametitle{Bash}
+\frametitle{What is Bash?}
 \begin{itemize}
-    \item Environmental variables control what commands/libraries are available
+    \item User interface for the Linux operating system
     \pause
-    \item E.g.
+    \item I.e. the 'language' used at the command line
     \pause
+    \item Interactive Shell on Franklin
+    \pause
+    \item There are 'other' shells available
     \begin{enumerate}
-        \item \code{PATH} : Location shell looks for commands / executables
-            \begin{itemize}
-                \item Try : \code{echo \$PATH}
-            \end{itemize}
-        \pause
-        \bigskip
-        \item \code{PYTHONPATH} : Location python looks for modules (libraries).
-            \begin{itemize}
-                \item Try : \code{echo \$PYTHONPATH}
-            \end{itemize}
-        \bigskip
-        \pause
-        \item \code{LD\_LIBRARY\_PATH} : Where shell looks for shared libraries.
-            \begin{itemize}
-                \item Try : \code{echo \$LD\_LIBRARY\_PATH}
-            \end{itemize}
-        \pause
-    \bigskip
-    \item See all environmental variables try : \code{env | less}
+        \item Korn Shell (\code{ksh}), C Shell (\code{csh}), Z shell (\code{zsh})
     \end{enumerate}
 \end{itemize}
 \end{frame}
 
 
 \begin{frame}
-\frametitle{Modules}
+\frametitle{What is Bash?}
+As a programming language, it has :
 \begin{itemize}
-    \item We use modules to manage software on Franklin.
+    \item Variables (i.e. \code{if/else})
     \pause
-    \bigskip
-    \item Try:
+    \item Conditionals (i.e. \code{if/else})
     \pause
-    \begin{itemize}
-        \item \code{module avail # List software in \emph{current} context. NOTE not all software is listed! }
-        \bigskip
-        \pause
-        \item \code{module spider # List all software}
-        \bigskip
-        \pause
-        \item \code{module spider samtools # List all versions of samtools}
-        \bigskip
-        \pause
-        \item \code{module load python/3.6.5}
-        \bigskip
-        \pause
-        \item \code{module list}
-        \bigskip
-        \pause
-        \item \code{module purge}
-    \end{itemize}
-\end{itemize}
-\end{frame}
-
-
-\begin{frame}
-\frametitle{Modules}
-\begin{itemize}
-    \item Modules installed here : \code{/opt/}
+    \item Loops 
     \pause
-    \bigskip
-    \item Modules files here : \code{/act/modulefiles/}
-\end{itemize}
-\end{frame}
-
-
-
-%%% Make this a section?
-
-
-
-\begin{frame}
-\frametitle{Python Example}
-\begin{itemize}
-    \item Look at \code{/act/modulefiles/python/3.6.5}
-    \pause
-    \item Notice how \code{PATH} and \code{PYTHONPATH} are pre-pended.
-    \pause
-    \item Try:
-    \begin{itemize}
-        \item \code{module purge}
-        \pause
-        \item Check \code{PATH}, \code{PYTHONPATH}.
-        \pause
-        \item \code{which python}
-        \pause
-        \item \code{module load python/3.6.5}
-        \pause
-        \item Check how \code{PATH}, \code{PYTHONPATH} change.
-        \pause
-        \item \code{which python}
-    \end{itemize}
+    \item Functions (ignored in this presentation)
 \end{itemize}
 \end{frame}
 
 
 \begin{frame}[fragile]
-\frametitle{Python Example}
-With the system python (\code{/usr/bin/python}):
+\frametitle{Variable Substition}
 \begingroup
 \scriptsize
 \begin{lstlisting}[backgroundcolor = \color{codegray}, language = Bash, showstringspaces=false]
@@ -205,244 +133,128 @@ Type "help", "copyright", "credits" or "license" for more info
 \end{frame}
 
 
+
 \begin{frame}[fragile]
-\frametitle{Python Example}
-With the \code{python/3.6.5} module :
+\frametitle{Conditionals}
 \begingroup
 \scriptsize
 \begin{lstlisting}[backgroundcolor = \color{codegray}, language = Bash, showstringspaces=false]
-$ module load python/3.6.5
-License File : see https://docs.anaconda.com/
+$ module purge
 $ python
-Python 3.6.5 |Anaconda, Inc.| (default, Apr 29 2018, 16:14:56)
-[GCC 7.2.0] on linux
+Python 2.6.6 (r266:84292, Aug 18 2016, 15:13:37)
+[GCC 4.4.7 20120313 (Red Hat 4.4.7-17)] on linux2
 Type "help", "copyright", "credits" or "license" for more info
 >>> import numpy
 >>> numpy.__file__
-'/opt/python/3.6.5/lib/python3.6/site-packages/numpy/__init__.py'
+'/usr/lib64/python2.6/site-packages/numpy/__init__.pyc'
 >>> exit()
 \end{lstlisting}
 \endgroup
 \end{frame}
 
 
+
+\begin{frame}[fragile]
+\frametitle{Loops}
+\begingroup
+\scriptsize
+\begin{lstlisting}[backgroundcolor = \color{codegray}, language = Bash, showstringspaces=false]
+$ module purge
+$ python
+Python 2.6.6 (r266:84292, Aug 18 2016, 15:13:37)
+[GCC 4.4.7 20120313 (Red Hat 4.4.7-17)] on linux2
+Type "help", "copyright", "credits" or "license" for more info
+>>> import numpy
+>>> numpy.__file__
+'/usr/lib64/python2.6/site-packages/numpy/__init__.pyc'
+>>> exit()
+\end{lstlisting}
+\endgroup
+\end{frame}
+
+
+
 \begin{frame}
-\frametitle{Python Example}
+\frametitle{Other Useful Features}
 \begin{itemize}
-    \item Notice when using \code{python/3.6.5} module, \code{numpy} is located within the directory \code{/opt/python/3.6.5/lib/python3.6/site-packages} specified in \code{PYTHONPATH} 
-    \bigskip
+    \item Pipes 
     \pause
-    \item Many different software utilize environmental variables in a fashion like Python does.
+    \item Stdout and stderr streams (ignored here)
+    \pause
+    \item Bash scripts
+    \pause
 \end{itemize}
 \end{frame}
 
-%%% Make this a section?
 
 \begin{frame}
-\frametitle{Libraries}
+\frametitle{Pipes}
+Give examples here
 \begin{itemize}
-    \item Libraries save time by providing mechanism to use another person's code.
-    \bigskip
+    \item Pipes 
     \pause
-    \item There are people who've already invented the wheel, so use it.
-    \bigskip
+    \item Stdout and stderr streams (ignored here)
     \pause
-    \item Powerful, optimized libraries include \code{glibc.so}, \code{lapack.so}, etc.
-    \bigskip
-    \pause
-    \item All software use libraries. Important concept in managing your software.
 \end{itemize}
 \end{frame}
 
 
-% see : https://stackoverflow.com/questions/12237282/whats-the-difference-between-so-la-and-a-library-files/12237595
 \begin{frame}
-\frametitle{Libraries}
+\frametitle{Bash Scripts}
+Give examples here
 \begin{itemize}
-    \item Shared Libraries (ending with \code{.so})
+    \item 
     \pause
-    \begin{itemize}
-        \item Pros : 
-        \begin{itemize}
-            \item Memory footprint is smaller (multiple programs can use same lib simultaneously)
-            \pause
-            \item Libraries loaded at run time. Specified by \code{/etc/ld.so.conf.d/} and \code{LD\_LIBRARY\_PATH}
-            \bigskip
-            \pause
-        \end{itemize}
-        \item Cons : 
-        \begin{itemize}
-            \item Users must install and maintain dependant shared libraries (i.e. 'dependency hell')
-            \pause
-            \item Can get surprised by subtle version differences.
-        \end{itemize}
-        \bigskip
+    \item
     \pause
-    \end{itemize}
-    \item Static Libraries (ending with \code{.a})
-    \pause
-    \begin{itemize}
-        \item Pros : 
-        \begin{itemize}
-            \item Library is same version as software was built with
-            \bigskip
-            \pause
-        \end{itemize}
-        \item Cons : 
-        \begin{itemize}
-            \item Larger memory footprint.
-        \end{itemize}
-    \end{itemize}
 \end{itemize}
 \end{frame}
 
 
-\begin{frame}[fragile]
-\frametitle{Libraries Example}
-%Trivial library example 
+\begin{frame}
+\frametitle{Not Bash but still useful}
+These aren't strictly Bash, but are incredibly useful none-the-less
 \begin{itemize}
-    \item \code{headers.h} : 
-    \begingroup
-    \scriptsize
-    \begin{lstlisting}[backgroundcolor = \color{codegray}, language = C, showstringspaces=false]
-    #ifndef HEADERS
-    #define HEADERS
-    int add(int a, int b);
-    int subtract(int a, int b);
-    #endif
-    \end{lstlisting}
-    \endgroup
-    
-    \item \code{add.c} : 
-    \begingroup
-    \scriptsize
-    \begin{lstlisting}[backgroundcolor = \color{codegray}, language = C, showstringspaces=false]
-    #include <stdio.h>
-    #include "headers.h"
-    int add(int a, int b){
-        printf("Hello from add() in lib.1\n");
-        return(a + b);
-    }
-    \end{lstlisting}
-    \endgroup
-    
-    
-    \item \code{subtract.c} : 
-    \begingroup
-    \scriptsize
-    \begin{lstlisting}[backgroundcolor = \color{codegray}, language = C, showstringspaces=false]
-    #include <stdio.h>
-    #include "headers.h"
-    int subtract(int a, int b){
-        printf("Hello from subtract() in lib.1\n");
-        return(a - b);
-    }
-    \end{lstlisting}
-    \endgroup
+    \item \code{grep} - search text for strings
+    \pause
+    \item \code{find}   - Find files or directories
+    \pause
+    \item \code{man XXXX} - Get manual page
+    \pause
+    \item \code{less}, \code{tail}, \code{head} - for viewing files w/o locally copying
+    \pause
+    \item \code{gedit} - GUI text editor
+    \pause
+    \item \code{history} - get list of previous commands
+    \pause
 \end{itemize}
 \end{frame}
 
 
-\begin{frame}[fragile]
-\frametitle{Libraries Example}
+
+
+
+\begin{frame}
+\frametitle{Being Useful}
+Use features of bash to programmatically interact with the Linux Operating system. Examples:
 \begin{itemize}
-    \item Copy 
-    \begingroup
-    \scriptsize
-    \begin{lstlisting}[backgroundcolor = \color{codegray}, language = Bash, showstringspaces=false]
-    $ cp -rp /gpfs0/scratch/Bash_Environment/codes/ ~/Scratch/
-    \end{lstlisting}
-    \endgroup
+    \item Using loops to operate over a set of files
     \pause
-
-    \item Navigate to \code{codes/} and compile with \code{./compile.sh} 
+    \item Interactive Shell on Franklin
     \pause
-
-    \item Generates exectuable \code{program} which uses \code{libmymath.so}
-    \pause
-
-    \item Library not found!
-    \begingroup
-    \scriptsize
-    \begin{lstlisting}[backgroundcolor = \color{codegray}, language = Bash, showstringspaces=false]
-    $ ldd program
-	linux-vdso.so.1 =>  (0x00007ffc10f70000)
-	libmymath.so => not found
-	libc.so.6 => /lib64/libc.so.6 (0x00002b6c0f20d000)
-	/lib64/ld-linux-x86-64.so.2 (0x000056347b79f000)
-    \end{lstlisting}
-    \endgroup
+    \item There are 'other' shells available
+    \begin{enumerate}
+        \item Korn Shell (\code{ksh}), C Shell (\code{csh}), Z shell (\code{zsh})
+    \end{enumerate}
 \end{itemize}
 \end{frame}
 
 
-\begin{frame}[fragile]
-\frametitle{Libraries Example}
-\begin{itemize}
-    \item Try : 
-    \begingroup
-    \tiny
-    \begin{lstlisting}[backgroundcolor = \color{codegray}, language = Bash, showstringspaces=false]
-    $ export LD_LIBRARY_PATH=/some/path/codes/lib.1/:$LD_LIBRARY_PATH
-    $ ldd program
-	linux-vdso.so.1 =>  (0x00007ffc432f6000)
-	libmymath.so => /some/path/codes/lib.1/libmymath.so (0x00002b64eba91000)
-	libc.so.6 => /lib64/libc.so.6 (0x00002b64ebcb5000)
-	/lib64/ld-linux-x86-64.so.2 (0x0000555da7d0b000)
-    \end{lstlisting}
-    \endgroup
-
-    \pause
-    \item Try : 
-    \begingroup
-    \tiny
-    \begin{lstlisting}[backgroundcolor = \color{codegray}, language = Bash, showstringspaces=false]
-    $ export LD_LIBRARY_PATH=/some/path/codes/lib.2/:$LD_LIBRARY_PATH
-    $ ldd program
-	linux-vdso.so.1 =>  (0x00007ffc432f6000)
-	libmymath.so => /some/path/codes/lib.2/libmymath.so (0x00002af711fe1000)
-	libc.so.6 => /lib64/libc.so.6 (0x00002b64ebcb5000)
-	/lib64/ld-linux-x86-64.so.2 (0x0000555da7d0b000)
-    \end{lstlisting}
-    \endgroup
-
-    \pause
-    \item Now run : 
-    \begingroup
-    \tiny
-    \begin{lstlisting}[backgroundcolor = \color{codegray}, language = Bash, showstringspaces=false]
-    $ ./program
-    Hello from add() in lib.2
-    9 + 2 = 11
-    Hello from subtract() in lib.2
-    9 - 2 = 7
-    \end{lstlisting}
-    \endgroup
-\end{itemize}
-\end{frame}
 
 
-\begin{frame}[fragile]
-\frametitle{Libraries Example}
-    \begingroup
-    \scriptsize
-    \begin{lstlisting}[backgroundcolor = \color{codegray}, language = Bash, showstringspaces=false]
-    export LD_LIBRARY_PATH=/some/path/codes/lib.2/:$LD_LIBRARY_PATH
-    \end{lstlisting}
-    \endgroup
-
-    \begin{itemize}
-        \item \code{\scriptsize export} : makes variable propagate to daughter shell
-        \pause
-        \bigskip
-        \item \code{\scriptsize \$LD\_LIBRARY\_PATH} : at end so we don't lose other libs we care about
-        \pause
-        \bigskip
-        \item \code{\scriptsize /some/path/codes/lib.2/} : prepended because the first lib found is used
-    \end{itemize}
-\end{frame}
 
 
+%%%%%%%% OTHER %%%%%%%%%%%%%
 
 % Include slides on .bashrc / .profile
 \begin{frame}
